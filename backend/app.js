@@ -9,6 +9,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const app = express();
+const db = require('./db');
 
 app.use(logger('dev'));
 app.use(express.json());
