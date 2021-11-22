@@ -39,7 +39,7 @@ This array is located here in the axios response: (response.data.finance.result[
     fullExchangeName: 'NasdaqGS',
     earningsTimestampStart: { raw: 1644836340, fmt: '2022-02-14', longFmt: '2022-02-14T05:59' },
     financialCurrency: 'USD',
-    displayName: 'Kornit Digital',
+    displayName: 'Kornit Digital',git s
     gmtOffSetMilliseconds: -18000000,
     regularMarketOpen: { raw: 160.71, fmt: '160.71' },
     regularMarketTime: { raw: 1637355602, fmt: '4:00PM EST' },

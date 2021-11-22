@@ -21,7 +21,9 @@ var singleStockOptions = {
 
 const getSingleStockSummary = () => {
   axios.request(singleStockOptions).then(function (response) {
-    console.log(response.data);
+    console.log(response.data.summaryProfile);
+    console.log(response.data.price);
+    console.log(response.data.summaryDetail);
   }).catch(function (error) {
     console.error(error);
   });
@@ -29,7 +31,7 @@ const getSingleStockSummary = () => {
 
 //getSingleStockSummary();
 
-
+//This is the set up for the Axios call to the screeners/list endpoint
 var filteredStockOptions = {
   method: 'POST',
   url: 'https://yh-finance.p.rapidapi.com/screeners/list',
