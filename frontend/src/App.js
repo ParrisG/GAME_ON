@@ -1,6 +1,5 @@
 
 import { Routes, Route, Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button'
 import './App.css';
 import Start from "./components/Start";
 import Dashboard from "./components/Dashboard";
@@ -12,7 +11,6 @@ import HeaderBar from "./components/HeaderBar";
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to GAME ON!</h1>
       <HeaderBar />
 
       <Routes>
