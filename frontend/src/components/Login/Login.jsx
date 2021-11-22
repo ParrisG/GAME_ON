@@ -1,18 +1,25 @@
 import {Link} from 'react-router-dom'
 import React, { useRef,useState } from "react";
 import { Form, Button, Card, Alert,Container } from "react-bootstrap";
+import axios from "axios";
 
 export default function Login () {
-  const firstnameRef = useRef();
-  const lastnameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const [error,setError]=useState('')
   function handleSubmit(e){
     e.preventDefault()
-    console.log(firstnameRef.current.value.trim().length)
-    if(firstnameRef.current.value.trim().length === 0 ||lastnameRef.current.value.trim().length === 0||emailRef.current.value.trim().length === 0 ||passwordRef.current.value.trim().length === 0)
-        return setError('Please fill the form')
+    if(emailRef.current.value.trim().length === 0 || passwordRef.current.value.trim().length === 0){
+      return setError('Please fill the form')
+    }
+    return axios.post('/users/login',{
+      email: emailRef.current.value,
+      password: passwordRef.current.value
+
+    }).then((response) => {
+      console.log(response);
+    });
+        
   }
   return (
     <Container

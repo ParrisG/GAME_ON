@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom'
 import React, { useRef,useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
+import axios from "axios";
 
 export default function Register () {
   const firstnameRef = useRef();
@@ -11,8 +12,22 @@ export default function Register () {
   function handleSubmit(e){
     e.preventDefault()
     console.log(firstnameRef.current.value.trim().length)
-    if(firstnameRef.current.value.trim().length === 0 ||lastnameRef.current.value.trim().length === 0||emailRef.current.value.trim().length === 0 ||passwordRef.current.value.trim().length === 0)
-        return setError('Please fill the form')
+    if(firstnameRef.current.value.trim().length === 0 ||lastnameRef.current.value.trim().length === 0||emailRef.current.value.trim().length === 0 ||passwordRef.current.value.trim().length === 0){
+      return setError('Please fill the form');
+    } 
+    return axios.post('/users/register',{
+      first_name: firstnameRef.current.value,
+      last_name: lastnameRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value
+
+    }).then((response) => {
+      console.log(response);
+    });
+
+
+        
+
   }
   return (
     <>
