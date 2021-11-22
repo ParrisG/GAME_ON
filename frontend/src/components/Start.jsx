@@ -11,6 +11,7 @@ export default function Start(props) {
       <div className="w-100" style={{ maxWidth: "400px" }}>
         <Register />
       </div>
-    </Container>
+    </Container> 
   );
+ 
 }

@@ -1,8 +1,8 @@
 import {Link} from 'react-router-dom'
 import React, { useRef,useState } from "react";
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Button, Card, Alert,Container } from "react-bootstrap";
 
-export default function Register () {
+export default function Login () {
   const firstnameRef = useRef();
   const lastnameRef = useRef();
   const emailRef = useRef();
@@ -15,7 +15,11 @@ export default function Register () {
         return setError('Please fill the form')
   }
   return (
-    <>
+    <Container
+      className="d-flex align-items-center justify-content-center"
+      style={{ minHeight: "100vh" }}
+    >
+      <div className="w-100" style={{ maxWidth: "400px" }}>
       <Card>
         <Card.Body>
           
@@ -49,13 +53,14 @@ export default function Register () {
                 
               ></Form.Control>
             </Form.Group>
-            <Button  type='submit' className="w-100 mt-2">Register</Button>
+            <Button  type='submit' className="w-100 mt-2">Log In</Button>
           </Form>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Already have an account? <Link to ="/login">Log in</Link>
+        Need an account? <Link to ="/start">Sign up</Link>
       </div>
-    </>
+      </div>
+      </Container>
   );
 }
