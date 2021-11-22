@@ -23,24 +23,9 @@ export default function Login () {
       <Card>
         <Card.Body>
           
-          <h2 className="text-center mb-4"> Register</h2>
+          <h2 className="text-center mb-4"> Login</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-            <Form.Group id="firstname">
-              <Form.Label>Firstname</Form.Label>
-              <Form.Control
-                type="text"
-                ref={firstnameRef}
-              ></Form.Control>
-            </Form.Group>
-            <Form.Group id="lastname">
-              <Form.Label>Lastname</Form.Label>
-              <Form.Control
-                type="text"
-                ref={lastnameRef}
-                
-              ></Form.Control>
-            </Form.Group>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} ></Form.Control>
