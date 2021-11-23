@@ -1,10 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const app = require('../app');
 
 
+<<<<<<< HEAD
 // const bcrypt = require('bcrypt');
 // const saltRounds = 10;
 
+=======
+>>>>>>> a320bb61cf3ad0ec0f5e2be036e59371b7cb7561
 module.exports = ({
   getUsers,
   getUserByEmail,
@@ -56,6 +64,15 @@ module.exports = ({
 
   })
 
+  router.get('/authenticate', (req, res) => {
+    if(req.session.user){
+      res.send({loggedIn: true, user:req.session.user});
+    } else {
+      res.send({loggedIn: false});
+    }
+
+  });
+
   router.post('/login', (req, res) => {
     const {
         email,
@@ -76,7 +93,10 @@ module.exports = ({
                   msg: 'Sorry, wrong credentials'
               });
           } else {
-            //console.log('here in else', user);
+            console.log('here in else :', user);
+            req.session.user = user;
+            console.log('session check: ', req.session.user);
+
             res.json(user);
           }
 
@@ -87,6 +107,10 @@ module.exports = ({
           
     });
 
+    router.post('/logout', (req, res) => {
+      req.session.user = null;
+      res.send({loggedIn: false});
+    });
 
   return router;
 };
