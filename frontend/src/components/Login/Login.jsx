@@ -2,11 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import React, { useEffect, useRef,useState } from "react";
 import { Form, Button, Card, Alert,Container } from "react-bootstrap";
 import axios from "axios";
-<<<<<<< HEAD
-import './Login.css'
-=======
 //import { response } from 'express';
->>>>>>> a320bb61cf3ad0ec0f5e2be036e59371b7cb7561
 
 export default function Login () {
   axios.defaults.withCredentials = true;

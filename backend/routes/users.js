@@ -7,12 +7,6 @@ const session = require('express-session');
 const app = require('../app');
 
 
-<<<<<<< HEAD
-// const bcrypt = require('bcrypt');
-// const saltRounds = 10;
-
-=======
->>>>>>> a320bb61cf3ad0ec0f5e2be036e59371b7cb7561
 module.exports = ({
   getUsers,
   getUserByEmail,
