@@ -10,6 +10,7 @@ export default function Dashboard(props) {
         <h2>Here is FilterBox:</h2>
         <FilterBox />
       </div>
+      
       <div>
         <h2>Here is StockList:</h2>
         <StockList />

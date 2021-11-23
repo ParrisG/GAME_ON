@@ -13,8 +13,8 @@ var singleStockOptions = {
   url: 'https://yh-finance.p.rapidapi.com/stock/v2/get-summary',
   params: {symbol: 'AMZN'},
   headers: {
-    'x-rapidapi-host': process.env.X_RAPIDAPI_HOST,
-    'x-rapidapi-key': process.env.X_RAPIDAPI_KEY
+    'x-rapidapi-host': process.env.REACT_APP_X_RAPIDAPI_HOST,
+    'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY
   }
 };
 
@@ -37,16 +37,16 @@ var filteredStockOptions = {
   url: 'https://yh-finance.p.rapidapi.com/screeners/list',
   params: {
     quoteType: 'EQUITY',
-    sortField: 'percentchange',
-    region: 'CA',
+    sortField: 'beta',
+    region: 'US',
     size: '10',
     offset: '0',
     sortType: 'DESC'
   },
   headers: {
     'content-type': 'application/json',
-    'x-rapidapi-host': process.env.X_RAPIDAPI_HOST,
-    'x-rapidapi-key': process.env.X_RAPIDAPI_KEY
+    'x-rapidapi-host': process.env.REACT_APP_X_RAPIDAPI_HOST,
+    'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY
   },
   data: [
     {operator: 'eq', operands: ['region', 'us']},
@@ -59,7 +59,7 @@ var filteredStockOptions = {
       ]
     },
     {operator: 'gt', operands: ['dayvolume', 15000]},
-    {operator: 'BTWN', operands: ['regularMarketPrice', 50, 150]}
+    {operator: 'BTWN', operands: ['intradayprice', 50, 150]}
   ]
 };
 
@@ -71,5 +71,5 @@ const getFilteredStocks = () => {
   })
 }
 
-//getFilteredStocks();
+getFilteredStocks();
 

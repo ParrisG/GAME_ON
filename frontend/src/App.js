@@ -6,10 +6,12 @@ import Dashboard from "./components/Dashboard";
 import StockDetail from "./components/StockDetail";
 import HeaderBar from "./components/HeaderBar";
 import Login from "./components/Login/Login";
+require('dotenv').config();
 
 
 
 function App() {
+  console.log(process.env.REACT_APP_X_RAPIDAPI_HOST)
   return (
     <div className="App">
       <HeaderBar />
