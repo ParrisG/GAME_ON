@@ -1,33 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
 import FilterBox from "./FilterBox";
 import StockList from "./StockList";
 import axios from "axios";
-import jwt from 'jsonwebtoken';
-import { Button } from 'react-bootstrap';
+import Button from "@restart/ui/esm/Button";
 
 export default function Dashboard(props) {
-  
-  const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
+  const [loginStatus, setLoginStatus] = useState('');
 
   useEffect(() => {
-		const token = localStorage.getItem('token');
+    axios.get('/users/authenticate').then((response) => {
+      console.log('line 13',response.data);
     
-    if(token){
-      const user = jwt.decode(token);
-      console.log('This is Success', user);
-    } else {
-      console.log('Line NUmber 34');
-      localStorage.removeItem('token');
-      alert('You have to Login To view this page');
-      navigate('/login');
-    }
-	}, [])
-
+      if(response.data.loggedIn === true){
+        //console.log('line num 16:',response.data.loggedIn);
+        setLoginStatus(response.data.user[0].email);
+      }
+    });
+  }, []);
 
   function logout() {
-    localStorage.removeItem('token');
-    navigate('/login');    
+    localStorage.clear();
+    // Remove saved data from sessionStorage
+    sessionStorage.removeItem('userId');
+    return axios.post('/users/logout',{
+      //email: emailRef.current.value,
+      //password: passwordRef.current.value
+    }).then((response) => {
+      console.log(response);
+      window.location.href = '/login';
+      //navigate('/dashboard');
+      //history.push('/dashboard');
+    });
+
+    window.location.href = '/login';
   }
 
   return (
