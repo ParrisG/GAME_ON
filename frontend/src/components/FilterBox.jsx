@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
-import { stringify, parse } from "flatted";
+
 
 
 export default function FilterBox(props) {
@@ -13,7 +13,11 @@ export default function FilterBox(props) {
   const minVolume = useRef();
 
   //Creating the options for the Axios call using the values from the filter.
-  const addFilterDetails = (minPrice, maxPrice, minVolume) => {
+  const addFilterDetails = () => {
+    let minPriceFilter = parseInt(minPrice.current.value);
+    let maxPriceFilter = parseInt(maxPrice.current.value);
+    let minVolumeFilter = parseInt(minVolume.current.value);
+
     const filterArr = [
       {operator: 'eq', operands: ['region', 'us']},
     {
@@ -25,19 +29,20 @@ export default function FilterBox(props) {
       ]
     },];
     
-    if (minVolume) {
-      filterArr.push({operator: 'gt', operands: ['dayvolume', minVolume]});
+    if (minVolumeFilter) {
+      filterArr.push({operator: 'gt', operands: ['dayvolume', minVolumeFilter]});
     }
-    if (minPrice && maxPrice) {
-      filterArr.push({operator: 'BTWN', operands: ['intradayprice', minPrice, maxPrice]});
-    } else if (minPrice) {
-      filterArr.push({operator: 'gt', operands: ['intradayprice', minPrice]});
-    } else if (maxPrice) {
-      filterArr.push({operator: 'lt', operands: ['intradayprice', maxPrice]});
+    if (minPriceFilter && maxPriceFilter) {
+      filterArr.push({operator: 'BTWN', operands: ['intradayprice', minPriceFilter, maxPriceFilter]});
+    } else if (minPriceFilter) {
+      filterArr.push({operator: 'gt', operands: ['intradayprice', minPriceFilter]});
+    } else if (maxPriceFilter) {
+      filterArr.push({operator: 'lt', operands: ['intradayprice', maxPriceFilter]});
     }
     return filterArr;
   }
-  let filteredStockOptions = {
+  const filteredStockOptions = () => {
+    return ({
     method: 'POST',
     url: 'https://yh-finance.p.rapidapi.com/screeners/list',
     params: {
@@ -53,16 +58,13 @@ export default function FilterBox(props) {
       'x-rapidapi-host': process.env.REACT_APP_X_RAPIDAPI_HOST,
       'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY
     },
-    data: addFilterDetails(minPrice, maxPrice, minVolume)
-  };
-
-  //using flatted to eliminate the circular reference JSON issue.
-  let options = stringify(filteredStockOptions);
-  let options2 = parse(options)
+    data: addFilterDetails()
+  })};
   
   const getFilteredStocks = () => {
-    axios.request(options2).then(function (response) {
-      console.log(options2)
+    console.log(filteredStockOptions())
+    axios.request(filteredStockOptions()).then(function (response) {
+      //This is just console logging the returned array, will need to be put in state somewhere and given to the stock list component to be rendered into the stock list items
       console.log(response.data.finance.result[0]["quotes"]);
     }).catch(function (error) {
       console.error(error);
@@ -70,11 +72,8 @@ export default function FilterBox(props) {
   }
 
   function handleSubmit(e){
-    
     e.preventDefault();
-    console.log(minPrice);
     getFilteredStocks();
-
   }
 
 
