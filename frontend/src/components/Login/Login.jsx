@@ -2,17 +2,17 @@ import { Link, useNavigate } from 'react-router-dom'
 import React, { useEffect, useRef,useState } from "react";
 import { Form, Button, Card, Alert,Container } from "react-bootstrap";
 import axios from "axios";
+
 //import { response } from 'express';
 
 export default function Login () {
-  axios.defaults.withCredentials = true;
+  //axios.defaults.withCredentials = true;
 
   const navigate = useNavigate();
 
   const emailRef = useRef();
   const passwordRef = useRef();
   const [error,setError] = useState('');
-  const [loginStatus, setLoginStatus] = useState('');
 
   function handleSubmit(e){
     e.preventDefault()
@@ -24,22 +24,14 @@ export default function Login () {
       password: passwordRef.current.value
     }).then((response) => {
       console.log(response);
-      navigate('/dashboard');
-      //history.push('/dashboard');
+      if(response.data.user){
+        localStorage.setItem('token', response.data.user);
+        navigate('/dashboard');
+      }
     });
         
   }
 
-  useEffect(() => {
-    axios.get('/users/authenticate').then((response) => {
-      console.log("*********");
-      console.log(response);
-      if(response.data.loggedIn === true){
-        setLoginStatus(response.data.user[0].email);
-      }
-      
-    });
-  }, []);
 
   return (
     <Container
