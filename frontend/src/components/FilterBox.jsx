@@ -72,6 +72,7 @@ export default function FilterBox(props) {
   function handleSubmit(e){
     
     e.preventDefault();
+    
     getFilteredStocks();
 
   }
@@ -88,21 +89,21 @@ export default function FilterBox(props) {
             <Form.Group id="regularMarketPrice_min">
               <Form.Label>Minimum Price</Form.Label>
               <Form.Control
-                type="number"
+                type="text"
                 ref={minPrice}
               ></Form.Control>
             </Form.Group>
             <Form.Group id="regularMarketPrice_max">
               <Form.Label>Maximum Price</Form.Label>
               <Form.Control
-                type="number"
+                type="text"
                 ref={maxPrice}
                 
               ></Form.Control>
             </Form.Group>
             <Form.Group id="dayvolume_min">
               <Form.Label>Minimum Daily Volume</Form.Label>
-              <Form.Control type="number" ref={minVolume} ></Form.Control>
+              <Form.Control type="text" ref={minVolume} ></Form.Control>
             </Form.Group>
             
             <Button  type='submit' className="w-100 mt-2">Find Stocks!</Button>
