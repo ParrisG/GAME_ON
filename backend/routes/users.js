@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const app = require('../app');
+const jwt = require('jsonwebtoken');
+//const bcrypt = require('bcryptjs');
 
-
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 module.exports = ({
   getUsers,
@@ -22,29 +22,21 @@ module.exports = ({
 
 
   router.post('/register', (req, res) => {
-
       const {
           first_name,
           last_name,
           email,
           password
       } = req.body;
-      
-      // const first_name = 'user';
-      // const last_name = 'userlast';
-      // const email = 'first@gmail.com';
-      // const password = 'test';
 
       getUserByEmail(email)
           .then(user => {
 
               if (user) {
-                //console.log('User exist', user);
                   res.json({
                       msg: 'Sorry, a user account with this email already exists'
                   });
               } else {
-                //console.log('id available****', email);
                   return addUser(first_name, last_name, email, password)
               }
 
@@ -61,28 +53,30 @@ module.exports = ({
         email,
         password
     } = req.body;
-    // const email = 'wrong@example.com';
-    // const password = 'test';
-
-    console.log('Email: ', email);
-    console.log('password: ', password);
+   
 
     getUserByEmailAndPasword(email, password)
         .then(user => {
-
           if (!user) {
-            //console.log('credentials ***', user);
               res.json({
                   msg: 'Sorry, wrong credentials'
               });
           } else {
-            //console.log('here in else', user);
-            res.json(user);
+            const token = jwt.sign(
+              {
+                name: user.first_name,
+                email: user.email,
+              },
+              'secret123'
+            );
+        
+            return res.json({ status: 'ok', user: token })
           }
 
       })
       .catch(err => res.json({
-          error: err.message
+          //error: err.message
+           status: 'error', user: false
       }));
           
     });
