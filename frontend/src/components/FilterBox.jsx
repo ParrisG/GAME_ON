@@ -72,7 +72,7 @@ export default function FilterBox(props) {
   function handleSubmit(e){
     
     e.preventDefault();
-    
+    console.log(minPrice);
     getFilteredStocks();
 
   }
@@ -98,7 +98,7 @@ export default function FilterBox(props) {
               <Form.Control
                 type="text"
                 ref={maxPrice}
-                
+              
               ></Form.Control>
             </Form.Group>
             <Form.Group id="dayvolume_min">
