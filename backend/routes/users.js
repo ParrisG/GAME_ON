@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+// const bcrypt = require('bcrypt');
+// const saltRounds = 10;
 
 module.exports = ({
   getUsers,
