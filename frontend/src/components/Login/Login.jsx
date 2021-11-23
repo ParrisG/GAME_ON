@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import React, { useEffect, useRef,useState } from "react";
 import { Form, Button, Card, Alert,Container } from "react-bootstrap";
 import axios from "axios";
+import './Login.css'
 
 //import { response } from 'express';
 
@@ -24,6 +25,12 @@ export default function Login () {
       password: passwordRef.current.value
     }).then((response) => {
       console.log(response);
+      if(response.data.msg){
+        console.log(response.data.msg)
+        setError(response.data.msg)
+        return
+      }
+      setError(response.data.msg)
       if(response.data.user){
         localStorage.setItem('token', response.data.user);
         navigate('/dashboard');
