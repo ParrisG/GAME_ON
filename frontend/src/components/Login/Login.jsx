@@ -48,6 +48,7 @@ export default function Login () {
       <div className="w-100" style={{ maxWidth: "400px" }}>
       <Card>
         <Card.Body>
+          <div className='login__page'>
           
           <h2 className="text-center mb-4"> Login</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -66,6 +67,7 @@ export default function Login () {
             </Form.Group>
             <Button  type='submit' className="w-100 mt-2">Log In</Button>
           </Form>
+          </div>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">

@@ -1,9 +1,10 @@
 import React from "react";
+import '../css/StockListItem.module.css'
 
 export default function StockListItem(props) {
   return (
     <div>
-      <h1>I am StockListItem</h1>
+      <p>{props.name}</p>
     </div>
   )
 }

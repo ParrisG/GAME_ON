@@ -1,5 +1,6 @@
 import { useEffect, useContext } from 'react';
 import { Routes, Route} from "react-router-dom";
+import './css/StockList.module.css'
 import './App.css';
 import Start from "./components/Start";
 import Dashboard from "./components/Dashboard";
