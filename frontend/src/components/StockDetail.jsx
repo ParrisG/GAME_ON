@@ -1,12 +1,19 @@
 import React from "react";
+import { useParams } from 'react-router-dom';
+
+
 import StockInformation from "./StockInformation";
 import StockChart from "./StockChart";
 import StockNewsList from "./StockNewsList";
 
 export default function StockDetail(props) {
+
+  let params = useParams(); //we can access the :ticker value as params.ticker
+
+
   return (
     <div>
-      <h1>I am StockDetail</h1>
+      <h1>I am StockDetail for Stock Ticker: {params.ticker} </h1>
       <div>
         <h2>Here is StockInformation:</h2>
         <StockInformation />
