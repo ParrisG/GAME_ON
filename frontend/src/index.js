@@ -4,10 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
+import StockArrProvider from './providers/StockArrProvider';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <StockArrProvider>
+      <App />
+    </StockArrProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );
