@@ -2,13 +2,12 @@ const express = require('express');
 const router = express.Router();
 const app = require('../app');
 const jwt = require('jsonwebtoken');
-//const bcrypt = require('bcryptjs');
-
+const bcrypt = require('bcryptjs');
+const salt = bcrypt.genSaltSync(10);
 
 module.exports = ({
   getUsers,
   getUserByEmail,
-  getUserByEmailAndPasword,
   addUser
 }) => {
   /* GET users listing. */
@@ -29,6 +28,8 @@ module.exports = ({
           password
       } = req.body;
 
+      const hashedPassword = bcrypt.hashSync(password, salt);
+
       getUserByEmail(email)
           .then(user => {
 
@@ -37,7 +38,7 @@ module.exports = ({
                       msg: 'Sorry, a user account with this email already exists'
                   });
               } else {
-                  return addUser(first_name, last_name, email, password)
+                  return addUser(first_name, last_name, email, hashedPassword)
               }
 
           })
@@ -53,26 +54,30 @@ module.exports = ({
         email,
         password
     } = req.body;
-   
 
-    getUserByEmailAndPasword(email, password)
+    getUserByEmail(email)
         .then(user => {
           if (!user) {
               res.json({
                   msg: 'Sorry, wrong credentials'
               });
           } else {
-            const token = jwt.sign(
-              {
-                name: user.first_name,
-                email: user.email,
-              },
-              'secret123'
-            );
-        
-            return res.json({ status: 'ok', user: token })
-          }
+            if(bcrypt.compareSync(password, user.password)){
 
+              const token = jwt.sign(
+                {
+                  name: user.first_name,
+                  email: user.email,
+                },
+                'secret123'
+              );
+              return res.json({ status: 'ok', user: token })
+            } else {
+              res.json({
+                msg: 'Sorry, wrong combination'
+              });
+            }
+          }
       })
       .catch(err => res.json({
           //error: err.message
