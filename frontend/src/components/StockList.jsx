@@ -1,7 +1,12 @@
-import React from "react";
+import { useContext } from "react";
 import StockListItem from "./StockListItem";
+import { stockArrContext } from '../providers/StockArrProvider';
+
 
 export default function StockList(props) {
+  const { stockArr } = useContext(stockArrContext);
+  console.log(stockArr);
+
   return (
     <div>
       <h1>I am StockList</h1>

@@ -1,9 +1,9 @@
-import React, { useRef }from "react";
+import React, { useRef, useContext }from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
-
+import { stockArrContext } from '../providers/StockArrProvider';
 
 
 export default function FilterBox(props) {
@@ -11,6 +11,8 @@ export default function FilterBox(props) {
   const minPrice = useRef();
   const maxPrice = useRef();
   const minVolume = useRef();
+
+  const { setStockArr } = useContext(stockArrContext);
 
   //Creating the options for the Axios call using the values from the filter.
   const addFilterDetails = () => {
@@ -64,7 +66,7 @@ export default function FilterBox(props) {
   const getFilteredStocks = () => {
     console.log(filteredStockOptions())
     axios.request(filteredStockOptions()).then(function (response) {
-      //This is just console logging the returned array, will need to be put in state somewhere and given to the stock list component to be rendered into the stock list items
+      setStockArr(response.data.finance.result[0]["quotes"]);
       console.log(response.data.finance.result[0]["quotes"]);
     }).catch(function (error) {
       console.error(error);
