@@ -1,10 +1,10 @@
 .card{
   background-color: #3c3c4d;
 }
-body{
-  color: #e9ecef;
-  box-shadow: 0 0 30px 0 rgb(0 0 0 / 12%);
+.login__page{
+  color: rgb(244, 244, 244);
 }
+
 .btn-primary{
   background-color: #5eb5f8;
 }

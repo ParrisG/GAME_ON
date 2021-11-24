@@ -1,9 +1,12 @@
 import React from "react";
+import {Container,Card} from "react-bootstrap";
+import './StockListItem.module.css'
 
 export default function StockListItem(props) {
   return (
-    <div>
-      <h1>I am StockListItem</h1>
-    </div>
+   <div className='.each__stock'>
+     {props.name}
+   </div>
+    
   )
 }

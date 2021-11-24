@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import StockListItem from "./StockListItem";
 import { stockArrContext } from '../providers/StockArrProvider';
+import {Container,Card} from "react-bootstrap";
+import './StockList.module.css'
 
 
 export default function StockList(props) {
@@ -11,12 +13,10 @@ export default function StockList(props) {
   ));
 
   return (
-    <div>
-      <h1>I am StockList</h1>
-      <div>
-        <h2>Here is StockListItem:</h2>
-        {parsedStocks}
-      </div>
+  
+    <div className='stats__row'>
+      {parsedStocks}
     </div>
   )
+    
 }
