@@ -87,8 +87,8 @@ export default function StockInformation(props) {
 
       <Card style={{ width: '18rem' }}>
         <Card.Body>
-          <Card.Title>{stockInfo.symbol}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">{stockInfo.name}</Card.Subtitle>
+          <Card.Title></Card.Title>
+          <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
           <Card.Text>
             
           </Card.Text>
@@ -99,7 +99,7 @@ export default function StockInformation(props) {
       <Spinner animation="border" role="status">
         <span className="visually-hidden">Loading...</span>
       </Spinner>
-      <p>{stockInfo.open}</p>
+      <p></p>
     </div>
   )
 }
