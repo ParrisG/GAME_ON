@@ -1,61 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-import {Card, Spinner} from 'react-bootstrap';
+import {Card, Spinner, ListGroup} from 'react-bootstrap';
 import axios from "axios";
 
 export default function StockInformation(props) {
 
-  let info = {
-    "beta": {},
-    "sector": {},
-    "summary": {},
-    "open": {},
-    "avgVolume": {},
-    "dayHigh": {},
-    "name": {},
-    "change": {},
-    "previousClose": {},
-    "preMarketPrice": {},
-    "preMarketChange": {},
-    "exchange": {},
-    "dayLow": {},
-    "volume": {},
-    "cap": {},
-    "preMarketChangePercent": {},
-    "regMarketChangePercent": {},
-    "symbol": {},
-  };
-
-  const [stockInfo, setStockInfo] = useState(info);
+  const [stockInfo, setStockInfo] = useState();
 
   let params = useParams(); //we can access the :ticker value as params.ticker
+
   
-
-  const createVariables = (info) => {
-    setStockInfo( (prevState) => ({...prevState, 
-      "beta": info.defaultKeyStatistics.beta.fmt,
-      "sector": info.summaryProfile.sector,
-      "summary": info.summaryProfile.longBusinessSummary,
-      "open": info.price.regularMarketOpen.fmt,
-      "avgVolume": info.price.averageDailyVolume10Day.longFmt,
-      "dayHigh": info.price.regularMarketDayHigh.fmt,
-      "name": info.price.shortName,
-      "change": info.price.regularMarketChange.fmt,
-      "previousClose": info.price.regularMarketPreviousClose.fmt,
-      "preMarketPrice": info.price.preMarketPrice.fmt,
-      "preMarketChange": info.price.preMarketChange.fmt,
-      "exchange": info.price.exchangeName,
-      "dayLow": info.price.regularMarketDayLow.fmt,
-      "volume": info.price.regularMarketVolume.longFmt,
-      "cap": info.price.marketCap.longFmt,
-      "preMarketChangePercent": info.price.preMarketChangePercent.fmt,
-      "regMarketChangePercent": info.price.regularMarketChangePercent.fmt,
-      "symbol": info.price.quoteType.symbol
-    }));
-
-    return info;
-  }
-
   const singleStockOptions = () => {
     return {
       method: 'GET',
@@ -71,19 +25,52 @@ export default function StockInformation(props) {
   useEffect(() => {
     axios.request(singleStockOptions())
     .then((response) => {
-      console.log(response.data);
-      createVariables(response.data);
-      console.log(stockInfo);
+      //console.log(response.data);
+      setStockInfo(response.data);
     })
     .catch((error) => {
       console.error(error);
     })
   }, []);
 
+  const stockInfoBox = () => {
+    if (!stockInfo) {
+      return (
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      )
+    } else {
+      
+        return (
+          <Card style={{ width: '30rem' }}>
+            <Card.Body>
+              <Card.Title>{params.ticker}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">{stockInfo.price.shortName}</Card.Subtitle>
+              <Card.Text>Exchange: {stockInfo.price.exchangeName}</Card.Text>
+              <ListGroup>
+                <ListGroup horizontal>
+                  <ListGroup.Item>Average Volume {stockInfo.price.averageDailyVolume10Day.longFmt}</ListGroup.Item>
+                  <ListGroup.Item>Day Volume {stockInfo.price.regularMarketVolume.longFmt}</ListGroup.Item>
+                </ListGroup>
+                <ListGroup.Item>Summary {stockInfo.summaryProfile.longBusinessSummary}</ListGroup.Item>
+              </ListGroup>
+            </Card.Body>
+          </Card>
+        )
+    }
+  };
+
+  let display = stockInfoBox();
+
 
   return (
     <div>
       <h1>I am StockInformation: </h1>
+<<<<<<< HEAD
+        {display}
+      
+=======
 
       <Card style={{ width: '18rem' }}>
         <Card.Body>
@@ -99,6 +86,7 @@ export default function StockInformation(props) {
       <Spinner animation="border" role="status">
         <span className="visually-hidden">Loading...</span>
       </Spinner>
+>>>>>>> main
       <p></p>
     </div>
   )
