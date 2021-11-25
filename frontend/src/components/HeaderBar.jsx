@@ -1,8 +1,27 @@
-import React from "react";
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
+import{Button,Navbar,Container} from 'react-bootstrap'
+import jwt from "jsonwebtoken";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function HeaderBar(props) {
+  const[islogin,setLogin]=useState(false)
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const user = jwt.decode(token);
+      setLogin(true)
+    }
+  }, []);
+
+  function logout() {
+    localStorage.removeItem("token");
+    setLogin(false)
+    navigate("/login");
+  }
   return (
     <>
     <Navbar bg="dark" variant="dark">
@@ -10,13 +29,14 @@ export default function HeaderBar(props) {
         <Navbar.Brand href="/dashbaord">
           <img
             alt=""
-            src='./images/'
-            width="30"
-            height="30"
+            src='https://dbdzm869oupei.cloudfront.net/img/vinylrugs/preview/32155.png'
+            width="40"
+            height="40"
             className="d-inline-block align-top"
           />{' '}
-        React Bootstrap
+        Game On
         </Navbar.Brand>
+        <Button></Button>
       </Container>
     </Navbar>
   </>
