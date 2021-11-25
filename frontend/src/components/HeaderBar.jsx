@@ -1,22 +1,44 @@
-import React from "react";
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
+import{Button,Navbar,Container} from 'react-bootstrap'
+import jwt from "jsonwebtoken";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function HeaderBar(props) {
+  const[islogin,setLogin]=useState(false)
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const user = jwt.decode(token);
+      setLogin(true)
+    }
+  }, []);
+
+  function logout() {
+    localStorage.removeItem("token");
+    setLogin(false)
+    navigate("/login");
+  }
   return (
-    <Navbar bg="light" variant="light">
+    <>
+    <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand style={{fontSize: 30}}>
+        <Navbar.Brand href="/dashbaord">
           <img
             alt=""
-            src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            width="45"
-            height="45"
+            src='https://dbdzm869oupei.cloudfront.net/img/vinylrugs/preview/32155.png'
+            width="40"
+            height="40"
             className="d-inline-block align-top"
           />{' '}
-        GAME ON!
+        Game On
         </Navbar.Brand>
+        <Button></Button>
       </Container>
     </Navbar>
+  </>
   )
 }

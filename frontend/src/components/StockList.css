@@ -1,0 +1,16 @@
+.stock__parsed{
+ display: flex;
+ /* flex-direction: row;
+ justify-content:space-between; */
+ flex-wrap: wrap;
+}
+.stock__parsed > div{ 
+ flex:20%;
+}
+.stockdetails__container{
+  width:1000px;
+  background-color:black;
+  position:relative;
+  left:400px;
+  top:-200px;
+}

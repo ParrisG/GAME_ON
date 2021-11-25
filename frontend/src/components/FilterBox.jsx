@@ -1,9 +1,8 @@
 import React, { useRef, useContext }from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import {Form,Button,Card,Container} from 'react-bootstrap'
 import axios from "axios";
 import { stockArrContext } from '../providers/StockArrProvider';
+import './Filterbox.css'
 
 
 export default function FilterBox(props) {
@@ -80,9 +79,9 @@ export default function FilterBox(props) {
 
 
   return (
-    <>
-      <Card>
-        <Card.Body>
+      <div  >
+      <Card className="filter__container">
+        <Card.Body >
           
           <h2 className="text-center mb-4"> FILTER</h2>
           
@@ -107,11 +106,11 @@ export default function FilterBox(props) {
               <Form.Control type="text" ref={minVolume} ></Form.Control>
             </Form.Group>
             
-            <Button  type='submit' className="w-100 mt-2">Find Stocks!</Button>
+            <Button  type='submit' className="w-90 mt-3">Find Stocks!</Button>
           </Form>
         </Card.Body>
       </Card>
+      </div>
   
-    </>
   )
 }

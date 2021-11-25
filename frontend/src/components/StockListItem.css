@@ -1,0 +1,14 @@
+
+.stock__container{
+  width: 100px;
+  height: 100px;
+  background-color: rgb(46, 45, 45);
+  color: white;
+  border-bottom-color:rgb(0, 0, 0) ;
+  margin: 3px; 
+  border-radius:25px;
+  padding: 5px;
+}
+.stock__container > .price {
+  color: green;
+}
