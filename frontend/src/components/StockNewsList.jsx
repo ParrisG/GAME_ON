@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 import axios from "axios";
 
 import StockNewsListItem from "./StockNewsListItem";
-import { Prev } from "react-bootstrap/esm/PageItem";
+//import { Prev } from "react-bootstrap/esm/PageItem";
 
 export default function StockNewsList(props) {
   const [stockNews, setStockNews] = useState([]);
+  let param = useParams();
   let news = [];
 
 
@@ -13,7 +15,7 @@ export default function StockNewsList(props) {
     return {
       method: 'POST',
       url: 'https://yh-finance.p.rapidapi.com/news/v2/list',
-      params: {region: 'US', snippetCount: '5', s: 'AMZN'},
+      params: {region: 'US', snippetCount: '5', s: param.ticker},
       headers: {
         'content-type': 'text/plain',
         'x-rapidapi-host': process.env.REACT_APP_X_RAPIDAPI_HOST,
@@ -28,16 +30,12 @@ export default function StockNewsList(props) {
    
     axios.request(getNewsList()).then(function (response) {
       
-      console.log('Line 53:',response.data);
+      //console.log('Line 53:',response.data);
       //const title = response.data.data.main.stream[0].content.title;
       const streamArr = response.data.data.main.stream;
       
-      console.log('Line 57:',streamArr);
       setStockNews(streamArr);
 
-      console.log('stockNews : ', stockNews);
-
-      
     })
     .catch(function (error) {
       console.error(error);
@@ -45,17 +43,15 @@ export default function StockNewsList(props) {
   }, []);
 
   news = (stockNews).map((stream) => {
-    console.log('Stream: ',stream)
+    //console.log('Stream: ',stream)
     if(stream.content){
-      return <StockNewsListItem key={stream.id} title={stream.content.title}/>
-    }
-    else{
+      return <StockNewsListItem key={stream.id} title={stream.content.title} uuid={stream.id}/>
+    } else {
       return <div>Loading</div>
     }
-    
   })
-  console.log('Stock here: ',stockNews);
+
   return (
-    <div>{news}</div>
+    <div>{news}</div> 
   )
 }
