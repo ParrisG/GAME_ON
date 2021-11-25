@@ -67,26 +67,8 @@ export default function StockInformation(props) {
   return (
     <div>
       <h1>I am StockInformation: </h1>
-<<<<<<< HEAD
         {display}
       
-=======
-
-      <Card style={{ width: '18rem' }}>
-        <Card.Body>
-          <Card.Title></Card.Title>
-          <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-          <Card.Text>
-            
-          </Card.Text>
-          <Card.Link href="#">Card Link</Card.Link>
-          <Card.Link href="#">Another Link</Card.Link>
-        </Card.Body>
-      </Card>
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
->>>>>>> main
       <p></p>
     </div>
   )
