@@ -32,6 +32,7 @@ export default function Dashboard(props) {
   return (
     <>
       <>
+      <button onClick={logout}>logout</button>
         <FilterBox />
       </>
       <StockList />   

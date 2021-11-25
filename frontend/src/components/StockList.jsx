@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import StockListItem from "./StockListItem";
 import { stockArrContext } from '../providers/StockArrProvider';
+import './StockList.css';
 
 
 
@@ -13,9 +14,12 @@ export default function StockList(props) {
 
   return (
     <div>
+      
+      <div className="stockdetails__container">
       <h1>Stocks</h1>
-      <div>
+      <div className="stock__parsed">
         {parsedStocks}
+      </div>
       </div>
     </div>
   )

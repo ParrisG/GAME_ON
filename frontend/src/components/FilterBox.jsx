@@ -79,7 +79,6 @@ export default function FilterBox(props) {
 
 
   return (
-    <Container>
       <div  >
       <Card className="filter__container">
         <Card.Body >
@@ -113,6 +112,5 @@ export default function FilterBox(props) {
       </Card>
       </div>
   
-      </Container>
   )
 }

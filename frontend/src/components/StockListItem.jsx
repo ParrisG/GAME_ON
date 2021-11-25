@@ -4,12 +4,10 @@ import './StockListItem.css'
 
 export default function StockListItem(props) {
   return (
-    <Container className="stock__container" >
-      <Card className="stock__card" >
+    <div className="stock__container" >
         <div>{props.name}</div>
-        <div>$ {props.price}</div>
-        <div>{props.percentChange}</div>
-        </Card>
-    </Container>
+        <div >$ {props.price}</div>
+        <div className="price">{props.percentChange}</div>
+        </div>
   )
 }
