@@ -1,4 +1,5 @@
 import React from "react";
+import './StockList.module.css'
 
 export default function StockListItem(props) {
   return (

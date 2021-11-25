@@ -5,6 +5,7 @@ import StockList from "./StockList";
 import axios from "axios";
 import jwt from 'jsonwebtoken';
 import { Button } from 'react-bootstrap';
+import './Dashboard.module.css'
 
 export default function Dashboard(props) {
   

@@ -45,10 +45,10 @@ export default function Login () {
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
     >
-      <div className="w-100" style={{ maxWidth: "400px" }}>
-      <Card>
+      <div className="w-100 car__class" style={{ maxWidth: "400px" }}>
+      <Card className='card-body__class'>
         <Card.Body>
-          
+          <div className="car__class">
           <h2 className="text-center mb-4"> Login</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
@@ -64,8 +64,9 @@ export default function Login () {
                 
               ></Form.Control>
             </Form.Group>
-            <Button  type='submit' className="w-100 mt-2">Log In</Button>
+            <Button  type='submit' className="w-100 mt-3">Log In</Button>
           </Form>
+          </div>
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
