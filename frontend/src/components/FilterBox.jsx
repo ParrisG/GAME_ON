@@ -107,7 +107,7 @@ export default function FilterBox(props) {
               <Form.Control type="text" ref={minVolume} ></Form.Control>
             </Form.Group>
             
-            <Button  type='submit' className="w-100 mt-2">Find Stocks!</Button>
+            <Button  type='submit' className="w-90 mt-3">Find Stocks!</Button>
           </Form>
         </Card.Body>
       </Card>

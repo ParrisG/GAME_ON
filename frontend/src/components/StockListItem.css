@@ -1,0 +1,10 @@
+.stock__card{
+  width: 150px;
+}
+.stock__container{
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: chocolate;
+}
