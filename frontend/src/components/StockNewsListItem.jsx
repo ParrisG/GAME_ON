@@ -1,4 +1,8 @@
 import axios from "axios";
+import { Card } from "react-bootstrap";
+import Container from 'react-bootstrap/Container';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Image from 'react-bootstrap/Image';
 
 export default function StockNewsListItem(props) {
  
@@ -23,17 +27,17 @@ export default function StockNewsListItem(props) {
   }
   
   return (
-    <div>
-      <ul>
-        <li>
-          <img src={props.thumbnail} /> 
-        </li>
-        <li>
-          {props.provider}
-          {props.duration}
-          <h5 onClick={getNewsDetails}>{props.title}</h5> 
-        </li> 
-      </ul> 
-    </div>
+    <Container>
+      <Card style={{ width: '40rem', background: 'rgb(99 99 99)' }}>
+        <ListGroup horizontal>
+          <ListGroup.Item>
+            <Image src={props.thumbnail} rounded />
+          </ListGroup.Item>
+          <ListGroup.Item onClick={getNewsDetails} style={{fontSize: '2rem', height: '10rem'}}>
+            {props.title}
+          </ListGroup.Item>
+        </ListGroup>
+      </Card>
+    </Container>
   )
 }

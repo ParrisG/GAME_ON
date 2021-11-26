@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
+import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 
 import StockNewsListItem from "./StockNewsListItem";
@@ -67,7 +68,11 @@ export default function StockNewsList(props) {
       duration={duration}
       />
     } else {
-      return <div>Loading</div>
+      return (
+        <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+      )
     }
   })
 
