@@ -1,3 +1,4 @@
+  price = stockInfo.price.regularMarketPrice.fmt
   beta = stockInfo.defaultKeyStatistics.beta.fmt
   sector = stockInfo.summaryProfile.sector
   summary = stockInfo.summaryProfile.longBusinessSummary
