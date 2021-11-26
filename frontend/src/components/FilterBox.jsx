@@ -5,7 +5,7 @@ import { stockArrContext } from '../providers/StockArrProvider';
 import './Filterbox.css'
 
 
-export default function FilterBox(props) {
+export default function FilterBox() {
 
   const minPrice = useRef();
   const maxPrice = useRef();
