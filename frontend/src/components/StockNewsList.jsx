@@ -44,8 +44,28 @@ export default function StockNewsList(props) {
 
   news = (stockNews).map((stream) => {
     //console.log('Stream: ',stream)
+    
+    const publishedDate = stream.content.pubDate;
+    const difference = new Date().getTime() - new Date(publishedDate).getTime();
+    const minutesDifference = Math.floor(difference / 1000 / 60);
+    let duration = minutesDifference + 'minutes';
+    if(minutesDifference > 59 && minutesDifference < 1440){
+      const hoursDifferences = Math.floor(difference / 1000 / 60 / 60);
+      duration = hoursDifferences + 'hours';
+    } else if(minutesDifference > 1440){
+      const daysDifference = Math.floor(difference / 1000 / 60 / 60 / 24);
+      duration = daysDifference + 'day';
+    }
+
     if(stream.content){
-      return <StockNewsListItem key={stream.id} title={stream.content.title} uuid={stream.id}/>
+      return <StockNewsListItem 
+      key={stream.id} 
+      title={stream.content.title} 
+      uuid={stream.id} 
+      thumbnail={stream.content.thumbnail.resolutions[1].url}
+      provider={stream.content.provider.displayName}
+      duration={duration}
+      />
     } else {
       return <div>Loading</div>
     }

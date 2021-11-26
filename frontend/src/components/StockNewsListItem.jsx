@@ -24,7 +24,16 @@ export default function StockNewsListItem(props) {
   
   return (
     <div>
-      <h1 onClick={getNewsDetails}>{props.title}</h1>    
+      <ul>
+        <li>
+          <img src={props.thumbnail} /> 
+        </li>
+        <li>
+          {props.provider}
+          {props.duration}
+          <h5 onClick={getNewsDetails}>{props.title}</h5> 
+        </li> 
+      </ul> 
     </div>
   )
 }
