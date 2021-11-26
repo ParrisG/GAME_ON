@@ -36,7 +36,7 @@ export default function HeaderBar(props) {
           />{' '}
         Game On
         </Navbar.Brand>
-        <Button></Button>
+        {islogin && <Button onClick={logout}>Logout</Button>}
       </Container>
     </Navbar>
   </>
