@@ -1,10 +1,11 @@
-.filter__container {
+.symbol__container {
   background-color:  rgb(46, 45, 45);
   box-shadow: 2px 2px 2px 2px rgb(171,219,227);
   border-radius:25px;
   width: 20rem;
   position: relative;
   top: 1rem;
+  margin-bottom: 2rem;
   left: .75rem;
   color: white;
 }

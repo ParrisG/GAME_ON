@@ -1,7 +1,7 @@
 import React, { useRef }from "react";
 import {Form,Button,Card} from 'react-bootstrap'
 import {useNavigate} from "react-router-dom";
-import './Filterbox.css'
+import './SymbolSearch.css'
 
 export default function SymbolSearch() {
 
@@ -21,7 +21,7 @@ export default function SymbolSearch() {
 
   return (
     <div>
-      <Card className="filter__container">
+      <Card className="symbol__container">
         <Card.Body >
           
           <h2 className="text-center mb-4"> Go To Stock</h2>
