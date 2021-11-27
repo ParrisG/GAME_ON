@@ -8,9 +8,10 @@
  flex:20%;
 }
 .stockdetails__container{
-  width:1000px;
+  width:50rem;
   background-color:black;
   position:relative;
-  left:400px;
-  top:-200px;
+  margin-right: 0.75rem;
+  left:.75rem;
+  top:1rem;
 }

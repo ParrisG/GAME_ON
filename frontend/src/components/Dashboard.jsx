@@ -5,7 +5,7 @@ import StockList from "./StockList";
 import SymbolSearch from "./SymbolSearch";
 import axios from "axios";
 import jwt from "jsonwebtoken";
-import { Button } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import "./Dashboard.module.css";
 
 export default function Dashboard(props) {
@@ -32,13 +32,19 @@ export default function Dashboard(props) {
 
   return (
     <>
-      
       <button onClick={logout}>logout</button>
-      <>
-      <SymbolSearch />
-      <FilterBox />
-      </>
-      <StockList />   
+      <Container fluid>
+        <Row>
+          <Col>
+            <SymbolSearch />
+            <FilterBox />
+          </Col>
+          <Col>
+            <StockList /> 
+          </Col>
+        </Row>
+        
+      </Container>
     </>
   );
 }
