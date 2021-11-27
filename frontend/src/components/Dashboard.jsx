@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FilterBox from "./FilterBox";
 import StockList from "./StockList";
+import SymbolSearch from "./SymbolSearch";
 import axios from "axios";
 import jwt from "jsonwebtoken";
 import { Button } from "react-bootstrap";
@@ -31,9 +32,11 @@ export default function Dashboard(props) {
 
   return (
     <>
-      <>
+      
       <button onClick={logout}>logout</button>
-        <FilterBox />
+      <>
+      <SymbolSearch />
+      <FilterBox />
       </>
       <StockList />   
     </>
