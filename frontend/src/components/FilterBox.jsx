@@ -1,5 +1,5 @@
 import React, { useRef, useContext }from "react";
-import {Form,Button,Card,Container} from 'react-bootstrap'
+import {Form,Button,Card,Container, ListGroup} from 'react-bootstrap'
 import axios from "axios";
 import { stockArrContext } from '../providers/StockArrProvider';
 import './Filterbox.css'
@@ -19,15 +19,32 @@ export default function FilterBox() {
     let maxPriceFilter = parseInt(maxPrice.current.value);
     let minVolumeFilter = parseInt(minVolume.current.value);
 
+    const getMarketCap = () => {
+      const capArray = [];
+      if (document.getElementById('nanoCap').checked) {
+        capArray.push({operator: 'LT', operands: ['intradaymarketcap', 50000000]});
+      } else if (document.getElementById('microCap').checked) {
+        capArray.push({operator: 'BTWN', operands: ['intradaymarketcap', 50000000, 300000000]});
+      } else if (document.getElementById('smallCap').checked) {
+        capArray.push({operator: 'BTWN', operands: ['intradaymarketcap', 300000000, 2000000000]});
+      } else if (document.getElementById('midCap').checked) {
+        capArray.push({operator: 'BTWN', operands: ['intradaymarketcap', 2000000000, 10000000000]});
+      } else if (document.getElementById('largeCap').checked) {
+        capArray.push({operator: 'BTWN', operands: ['intradaymarketcap', 10000000000, 200000000000]});
+      } else if (document.getElementById('largeCap').checked) {
+        capArray.push({operator: 'GT', operands: ['intradaymarketcap', 200000000000]});
+      } else {
+        capArray.push({operator: 'GT', operands: ['intradaymarketcap', 2000000000]});
+      };
+  
+      return capArray;
+    };
+
     const filterArr = [
       {operator: 'eq', operands: ['region', 'us']},
     {
       operator: 'or',
-      operands: [
-        {operator: 'BTWN', operands: ['intradaymarketcap', 2000000000, 10000000000]},
-        {operator: 'BTWN', operands: ['intradaymarketcap', 10000000000, 100000000000]},
-        {operator: 'GT', operands: ['intradaymarketcap', 100000000000]}
-      ]
+      operands: getMarketCap()
     },];
     
     if (minVolumeFilter) {
@@ -50,7 +67,6 @@ export default function FilterBox() {
       return("beta");
     }
   }
-
 
   const filteredStockOptions = () => {
     return ({
@@ -139,7 +155,32 @@ export default function FilterBox() {
                 value="beta"
               />
             </Form.Group>
-
+            <ListGroup style={{fontSize: '0.75rem'}}>
+              <ListGroup horizontal>
+                <ListGroup.Item style={{ width: '11.5rem'}}>Nano-Cap</ListGroup.Item>
+                <ListGroup.Item style={{ width: '3.5rem'}}><Form.Check id="nanoCap" type="checkbox" /></ListGroup.Item>
+              </ListGroup>
+              <ListGroup horizontal>
+                <ListGroup.Item style={{ width: '11.5rem'}}>Micro-Cap</ListGroup.Item>
+                <ListGroup.Item style={{ width: '3.5rem'}}><Form.Check id="microCap" type="checkbox" /></ListGroup.Item>
+              </ListGroup>
+              <ListGroup horizontal>
+                <ListGroup.Item style={{ width: '11.5rem'}}>small-Cap</ListGroup.Item>
+                <ListGroup.Item style={{ width: '3.5rem'}}><Form.Check id="smallCap" type="checkbox" /></ListGroup.Item>
+              </ListGroup>
+              <ListGroup horizontal>
+                <ListGroup.Item style={{ width: '11.5rem'}}>Mid-Cap</ListGroup.Item>
+                <ListGroup.Item style={{ width: '3.5rem'}}><Form.Check id="midCap" type="checkbox" /></ListGroup.Item>
+              </ListGroup>
+              <ListGroup horizontal>
+                <ListGroup.Item style={{ width: '11.5rem'}}>Large-Cap</ListGroup.Item>
+                <ListGroup.Item style={{ width: '3.5rem'}}><Form.Check id="largeCap" type="checkbox" /></ListGroup.Item>
+              </ListGroup>
+              <ListGroup horizontal>
+                <ListGroup.Item style={{ width: '11.5rem'}}>Mega-Cap</ListGroup.Item>
+                <ListGroup.Item style={{ width: '3.5rem'}}><Form.Check id="megaCap" type="checkbox" /></ListGroup.Item>
+              </ListGroup>
+            </ListGroup>
             
             <Button  type='submit' className="w-90 mt-3">Find Stocks!</Button>
           </Form>
