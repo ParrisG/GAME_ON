@@ -26,7 +26,7 @@ export default function HeaderBar(props) {
     <>
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="/dashbaord">
+        <Navbar.Brand href="/dashboard">
           <img
             alt=""
             src='https://dbdzm869oupei.cloudfront.net/img/vinylrugs/preview/32155.png'

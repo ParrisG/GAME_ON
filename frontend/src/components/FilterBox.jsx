@@ -42,15 +42,25 @@ export default function FilterBox() {
     }
     return filterArr;
   }
+
+  const sortByOption = () => {
+    if (document.getElementById('sort').checked) {
+      return(document.getElementById('sort').value);
+    } else {
+      return("beta");
+    }
+  }
+
+
   const filteredStockOptions = () => {
     return ({
     method: 'POST',
     url: 'https://yh-finance.p.rapidapi.com/screeners/list',
     params: {
       quoteType: 'EQUITY',
-      sortField: 'percentchange',
+      sortField: sortByOption(),
       region: 'US',
-      size: '10',
+      size: '20',
       offset: '0',
       sortType: 'DESC'
     },
@@ -74,6 +84,11 @@ export default function FilterBox() {
 
   function handleSubmit(e){
     e.preventDefault();
+    if (document.getElementById('sort').checked) {
+      console.log(document.getElementById('sort').value);
+    } else {
+      console.log("beta");
+    }
     getFilteredStocks();
   }
 
@@ -105,6 +120,26 @@ export default function FilterBox() {
               <Form.Label>Minimum Daily Volume</Form.Label>
               <Form.Control type="text" ref={minVolume} ></Form.Control>
             </Form.Group>
+            <Form.Group>
+              <Form.Check
+                inline
+                label="Percent Change"
+                name="sort"
+                type="radio"
+                id="sort"
+                value="percentchange"
+                checked
+              />
+              <Form.Check
+                inline
+                label="Beta"
+                name="sort"
+                type="radio"
+                id="sort"
+                value="beta"
+              />
+            </Form.Group>
+
             
             <Button  type='submit' className="w-90 mt-3">Find Stocks!</Button>
           </Form>
