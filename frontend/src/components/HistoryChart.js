@@ -58,6 +58,9 @@ Chart.register(
 
 export default function HistoryChart(props){
   const chartRef = useRef();
+  console.log('props:',props.chart_time);
+  console.log('propsX:',props.xAxis);
+  console.log('propsY:',props.yAxis);
 
   useEffect(()=> {
 
@@ -65,10 +68,22 @@ export default function HistoryChart(props){
         const chartInstance = new Chart(chartRef.current, {
           type: 'line',
           data: {
-              labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+              labels: ["2015-03-15T13:03:00Z", "2015-03-25T13:02:00Z", "2015-04-25T14:12:00Z"],
               datasets: [{
                   label: '# of Votes',
-                  data: [{x:1,y:15},{x:2,y:12},{x:3,y:25}],
+                  data: [{
+                    t: '2015-03-15T13:03:00Z',
+                    y: 12
+                  },
+                  {
+                    t: '2015-03-25T13:02:00Z',
+                    y: 21
+                  },
+                  {
+                    t: '2015-04-25T14:12:00Z',
+                    y: 32
+                  }
+                ],
                   borderWidth: 1,
                   fill: true,
                   borderColor: 'rgb(75, 192, 192)',
@@ -77,7 +92,11 @@ export default function HistoryChart(props){
               }]
           },
           options: {
-            ...historyOptions,
+            scales: {
+              xAxes: [{
+                type: 'time',
+              }]
+            }
           },
       });
     }

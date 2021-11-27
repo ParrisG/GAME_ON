@@ -49,36 +49,46 @@ export default function StockChart(props) {
       'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY
     }
   };
+  const chartArr = [];
+  const chartQuote = [];
+  let quoteOpen = [];
+  let timeStamp = [];
 
   const formatData = (range) =>{
-    const timeStamp = range.data.chart.result[0].timestamp;
-    const quoteOpen = range.data.chart.result[0].indicators.quote[0].open;
-    const chartArr = [];
+    timeStamp = range.data.chart.result[0].timestamp;
+    quoteOpen = range.data.chart.result[0].indicators.quote[0].open;
+    
+    //const chartTime = [];
+    
     for (let i = 0; i < timeStamp.length; i++){
       let chartData = {};
-      const time = getChartTime(timeStamp[i]);
+      //const time = getChartTime(timeStamp[i]);
+      chartArr.push(timeStamp[i]);
       //chartTimeArr.push(time);
       const quote = quoteOpen[i].toFixed(2);
-      chartData[time] = quote;
-      chartArr.push(chartData);
+      chartQuote.push(quote);
+      // chartData.x = time;
+      // chartData.y = quote;
+      //chartArr.push(chartData);
     }
-    //console.log('Chart : ', chartArr);
-    chartArr.map((elm)=> {
-      //console.log(elm);
-      const key = Object.keys(elm);
-      //console.log('key=',key);
-      //console.log('elm[key]=',elm[key]);
+    console.log('quotes**:', chartQuote);
+    console.log('time** : ', chartArr);
+    // chartArr.map((elm)=> {
+    //   //console.log(elm);
+    //   const key = Object.keys(elm);
+    //   //console.log('key=',key);
+    //   //console.log('elm[key]=',elm[key]);
 
-      return {t:key, y:elm[key]}
+    //   return {t:key, y:elm[key]}
 
-      //return {t:elm}
-    })
+    //   //return {t:elm}
+    // })
   }
 
   useEffect(() => {
     const fetchData = async() =>{
       const[day, week, month] = await Promise.all([
-        axios.request(dayChartOptions), axios.request(weekChartOptions), axios.request(monthChartOptions)
+        axios.request(dayChartOptions)//, axios.request(weekChartOptions), axios.request(monthChartOptions)
       ])
      
       const dayData = formatData(day);
@@ -97,7 +107,7 @@ export default function StockChart(props) {
 
   return (
     <div>
-      <HistoryChart/>
+      <HistoryChart chart_time={chartArr} yAxis={chartQuote} xAxis={chartArr}/>
     </div>
   )
 }
