@@ -136,6 +136,7 @@ export default function FilterBox() {
               <Form.Label>Minimum Daily Volume</Form.Label>
               <Form.Control type="text" ref={minVolume} ></Form.Control>
             </Form.Group>
+            <Form.Label>Sort By</Form.Label>
             <Form.Group>
               <Form.Check
                 inline
@@ -155,30 +156,35 @@ export default function FilterBox() {
                 value="beta"
               />
             </Form.Group>
-            <ListGroup style={{fontSize: '0.75rem'}}>
-              <ListGroup horizontal>
-                <ListGroup.Item style={{ width: '11.5rem'}}>Nano-Cap</ListGroup.Item>
-                <ListGroup.Item style={{ width: '3.5rem'}}><Form.Check id="nanoCap" type="checkbox" /></ListGroup.Item>
+            <Form.Label>Select Market Cap</Form.Label>
+            <ListGroup style={{fontSize: '0.75rem'}} horizontal>
+              <ListGroup>
+                <ListGroup horizontal>
+                  <ListGroup.Item style={{ width: '6.5rem'}}>Nano-Cap</ListGroup.Item>
+                  <ListGroup.Item style={{ width: '2.5rem'}}><Form.Check id="nanoCap" type="checkbox" /></ListGroup.Item>
+                </ListGroup>
+                <ListGroup horizontal>
+                  <ListGroup.Item style={{ width: '6.5rem'}}>Micro-Cap</ListGroup.Item>
+                  <ListGroup.Item style={{ width: '2.5rem'}}><Form.Check id="microCap" type="checkbox" /></ListGroup.Item>
+                </ListGroup>
+                <ListGroup horizontal>
+                  <ListGroup.Item style={{ width: '6.5rem'}}>small-Cap</ListGroup.Item>
+                  <ListGroup.Item style={{ width: '2.5rem'}}><Form.Check id="smallCap" type="checkbox" /></ListGroup.Item>
+                </ListGroup>
               </ListGroup>
-              <ListGroup horizontal>
-                <ListGroup.Item style={{ width: '11.5rem'}}>Micro-Cap</ListGroup.Item>
-                <ListGroup.Item style={{ width: '3.5rem'}}><Form.Check id="microCap" type="checkbox" /></ListGroup.Item>
-              </ListGroup>
-              <ListGroup horizontal>
-                <ListGroup.Item style={{ width: '11.5rem'}}>small-Cap</ListGroup.Item>
-                <ListGroup.Item style={{ width: '3.5rem'}}><Form.Check id="smallCap" type="checkbox" /></ListGroup.Item>
-              </ListGroup>
-              <ListGroup horizontal>
-                <ListGroup.Item style={{ width: '11.5rem'}}>Mid-Cap</ListGroup.Item>
-                <ListGroup.Item style={{ width: '3.5rem'}}><Form.Check id="midCap" type="checkbox" /></ListGroup.Item>
-              </ListGroup>
-              <ListGroup horizontal>
-                <ListGroup.Item style={{ width: '11.5rem'}}>Large-Cap</ListGroup.Item>
-                <ListGroup.Item style={{ width: '3.5rem'}}><Form.Check id="largeCap" type="checkbox" /></ListGroup.Item>
-              </ListGroup>
-              <ListGroup horizontal>
-                <ListGroup.Item style={{ width: '11.5rem'}}>Mega-Cap</ListGroup.Item>
-                <ListGroup.Item style={{ width: '3.5rem'}}><Form.Check id="megaCap" type="checkbox" /></ListGroup.Item>
+              <ListGroup>
+                <ListGroup horizontal>
+                  <ListGroup.Item style={{ width: '6.5rem'}}>Mid-Cap</ListGroup.Item>
+                  <ListGroup.Item style={{ width: '2.5rem'}}><Form.Check id="midCap" type="checkbox" /></ListGroup.Item>
+                </ListGroup>
+                <ListGroup horizontal>
+                  <ListGroup.Item style={{ width: '6.5rem'}}>Large-Cap</ListGroup.Item>
+                  <ListGroup.Item style={{ width: '2.5rem'}}><Form.Check id="largeCap" type="checkbox" /></ListGroup.Item>
+                </ListGroup>
+                <ListGroup horizontal>
+                  <ListGroup.Item style={{ width: '6.5rem'}}>Mega-Cap</ListGroup.Item>
+                  <ListGroup.Item style={{ width: '2.5rem'}}><Form.Check id="megaCap" type="checkbox" /></ListGroup.Item>
+                </ListGroup>
               </ListGroup>
             </ListGroup>
             
