@@ -33,7 +33,7 @@ export default function Dashboard(props) {
   return (
     <>
       <button onClick={logout}>logout</button>
-      <Container fluid>
+      <Container>
         <Row>
           <Col>
             <SymbolSearch />
