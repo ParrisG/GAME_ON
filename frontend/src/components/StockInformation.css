@@ -1,0 +1,41 @@
+.stock__infocontainer{
+  background-color: #3c3c4d;
+  width: 800px;
+  height: 400px;
+  color:white;
+  border-radius: 5%;
+  box-shadow: 0 0 20px 0rgb(0,0,0 /7%);
+  position: relative;
+  left: -450px;
+  top:20px;
+}
+.stock__name > p {
+padding: 0;
+margin:0;
+font-size: 1rem; 
+}
+.stock__infoheader{
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.7rem;
+}
+.stock__table >table >tr{
+  text-align: start;
+   margin-right: 0.8rem;
+}
+.stock__label{
+  font-size: 1.4rem;
+  display: flex;
+}
+.stock__number{
+  color: rgb(250, 246, 246);
+  font-weight:800;
+}
+.floatleft{
+  width: 50%;
+  float: left;
+}
+.floatright{
+  width:50%;
+  float:right;
+}

@@ -1,6 +1,7 @@
 import {useRef, useEffect, useState} from "react";
-import { Spinner } from "react-bootstrap";
+import { Spinner,Container } from "react-bootstrap";
 import { historyOptions } from "./chartConfig/chartConfigs";
+import './HistoryChart.css'
 
 import {
   Chart,
@@ -98,14 +99,17 @@ export default function HistoryChart(props){
   },[])
 
   return(
-    <div className="bg-white border mt-2 rounded p-3">
+    <Container>
+    {/* <div className="bg-white border mt-2 rounded p-3 chart__size"> */}
+    <div className='chart__size'>
       
-      <div>
+     
         {!isloading && <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
         </Spinner>}
        <canvas id="myChart" ref={chartRef} width="250" height="250"></canvas>
-      </div>
+
     </div>
+    </Container>
   )
 }

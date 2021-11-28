@@ -35,17 +35,17 @@ export default function StockDetail(props) {
 
   return (
     <div>
-      <h1>I am StockDetail for Stock Ticker: {params.ticker} </h1>
+      {/* <h1>I am StockDetail for Stock Ticker: {params.ticker} </h1> */}
       <div>
-        <h2>Here is StockInformation:</h2>
+        {/* <h2>Here is StockInformation:</h2> */}
         <StockInformation />
       </div>
       <div>
-        <h2>Here is StockChart:</h2>
+        {/* <h2>Here is StockChart:</h2> */}
         <StockChart />
       </div>
       <div>
-        <h2>Here is StockNewsList:</h2>
+        {/* <h2>Here is StockNewsList:</h2> */}
         <StockNewsList />
       </div>
     </div>
