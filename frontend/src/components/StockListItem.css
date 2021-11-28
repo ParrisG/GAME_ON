@@ -16,4 +16,5 @@
 .stock__container > .stock__name {
   font-weight: 700;
   text-decoration-line: underline;
+  font-size: 1.07rem
 }
