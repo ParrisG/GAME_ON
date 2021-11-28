@@ -16,9 +16,9 @@ export default function StockListItem(props) {
 
   return (
     <Container onClick={handleClick} className="stock__container">
-        <div>{props.name}</div>
-        <div >$ {props.price}</div>
-        <div className="price">{props.percentChange}</div> 
+        <div className="stock__name">{props.name}</div>
+        <div >Price: $ {props.price}</div>
+        <div className="percentage">Change: {props.percentChange}</div> 
     </Container>
   )
 }

@@ -24,17 +24,17 @@ export default function HeaderBar(props) {
   }
   return (
     <>
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark" style={{ height:"5rem"}}>
       <Container>
         <Navbar.Brand href="/dashboard">
           <img
             alt=""
             src='https://dbdzm869oupei.cloudfront.net/img/vinylrugs/preview/32155.png'
-            width="40"
-            height="40"
+            width="65rem"
+            height="65rem"
             className="d-inline-block align-top"
           />{' '}
-        Game On
+          <span style={{fontSize:"3rem"}}>Game On!</span>
         </Navbar.Brand>
         <Button></Button>
       </Container>
