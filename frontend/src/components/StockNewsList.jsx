@@ -31,8 +31,6 @@ export default function StockNewsList(props) {
    
     axios.request(getNewsList()).then(function (response) {
       
-      //console.log('Line 53:',response.data);
-      //const title = response.data.data.main.stream[0].content.title;
       const streamArr = response.data.data.main.stream;
       
       setStockNews(streamArr);
@@ -44,8 +42,6 @@ export default function StockNewsList(props) {
   }, []);
 
   news = (stockNews).map((stream) => {
-    //console.log('Stream: ',stream)
-    
     const publishedDate = stream.content.pubDate;
     const difference = new Date().getTime() - new Date(publishedDate).getTime();
     const minutesDifference = Math.floor(difference / 1000 / 60);
@@ -57,13 +53,20 @@ export default function StockNewsList(props) {
       const daysDifference = Math.floor(difference / 1000 / 60 / 60 / 24);
       duration = daysDifference + 'day';
     }
+    let hasThumbnail = stream.content.thumbnail;
+    let thumbnail;
+    if(!hasThumbnail){
+      thumbnail = 'https://dbdzm869oupei.cloudfront.net/img/vinylrugs/preview/32155.png';
+    } else {
+      thumbnail = hasThumbnail.resolutions[1].url;
+    }
 
     if(stream.content){
       return <StockNewsListItem 
       key={stream.id} 
       title={stream.content.title} 
       uuid={stream.id} 
-      thumbnail={stream.content.thumbnail.resolutions[1].url}
+      thumbnail={thumbnail}
       provider={stream.content.provider.displayName}
       duration={duration}
       />

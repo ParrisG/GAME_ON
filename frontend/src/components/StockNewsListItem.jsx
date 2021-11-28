@@ -2,9 +2,11 @@ import axios from "axios";
 import { Card } from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Image from 'react-bootstrap/Image';
+import { Image } from "react-bootstrap";
+import './StockNewsListItem.css'
 
 export default function StockNewsListItem(props) {
+  console.log(props.duration)
  
   function getNewsDetails(){
     let id = props.uuid;
@@ -27,17 +29,22 @@ export default function StockNewsListItem(props) {
   }
   
   return (
-    <Container>
-      <Card style={{ width: '40rem', background: 'rgb(99 99 99)' }}>
-        <ListGroup horizontal>
-          <ListGroup.Item>
-            <Image src={props.thumbnail} rounded />
-          </ListGroup.Item>
-          <ListGroup.Item onClick={getNewsDetails} style={{fontSize: '2rem', height: '10rem'}}>
-            {props.title}
-          </ListGroup.Item>
-        </ListGroup>
-      </Card>
+    <Container className="newsfeed__container" style={{borderBottom:'1px solid black',padding:'1px',paddingBottom:'2px'}}>
+      <div className="newsfeed__inner">
+        <div className="newsfeed__header">
+          <span>{props.provider}</span>
+          <br/>
+          <span>{props.duration}ago</span>
+        </div>
+          <div>
+            <table>
+              <tr>
+                <td><img style={{width:'100px',height:'100px',marginRight:'1.5rem'}}src={props.thumbnail}/></td>
+                <td onClick={getNewsDetails}   className="newsfeed__title">{props.title}</td>
+              </tr>
+            </table>
+        </div>
+      </div>
     </Container>
   )
 }

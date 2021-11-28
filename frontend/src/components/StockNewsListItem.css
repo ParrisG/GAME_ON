@@ -1,0 +1,19 @@
+.newsfeed__container{
+  background-color: #3c3c4d;
+  width: 700px;
+  color: white;
+  position: relative;
+  top:-250px;
+
+}
+.newsfeed__image{
+  width: 100px;
+  height: 100px;
+}
+.newsfeed__container >table >tr{
+  text-align: center;
+}
+.newsfeed__title:hover{
+  color: rgb(85, 85, 252);
+  cursor: pointer;
+}
