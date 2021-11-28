@@ -1,4 +1,5 @@
-import {useRef, useEffect} from "react";
+import {useRef, useEffect, useState} from "react";
+import { Spinner } from "react-bootstrap";
 import { historyOptions } from "./chartConfig/chartConfigs";
 
 import {
@@ -57,37 +58,53 @@ Chart.register(
 );
 
 export default function HistoryChart(props){
-  const chartRef = useRef();
+  const chartRef = useRef()
+  const [isloading,setLoading]=useState(false)
+  const gain = props.quote;
+  const dates = props.time;
+  const  drawChart = ()=>{
+    if(chartRef && chartRef.current){
+      const chartInstance = new Chart(chartRef.current, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: 'Stocks',
+                data: gain,
+                borderWidth: 1,
+                fill: true,
+                borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: 'rgb(0,128,0)',
+                tension: 0.1
+            }]
+        },
+        
+        options: {
+          ...historyOptions,
+        },
+    });
+  }
+  setLoading(true)
+
+  }
 
   useEffect(()=> {
 
-    if(chartRef && chartRef.current){
-        const chartInstance = new Chart(chartRef.current, {
-          type: 'line',
-          data: {
-              labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-              datasets: [{
-                  label: '# of Votes',
-                  data: [{x:1,y:15},{x:2,y:12},{x:3,y:25}],
-                  borderWidth: 1,
-                  fill: true,
-                  borderColor: 'rgb(75, 192, 192)',
-                  backgroundColor: 'rgb(0,128,0)',
-                  tension: 0.1
-              }]
-          },
-          options: {
-            ...historyOptions,
-          },
-      });
-    }
+    setTimeout(()=>{
+      drawChart();
+    },3000)
+  
+
   },[])
 
   return(
     <div className="bg-white border mt-2 rounded p-3">
-      <div></div>
+      
       <div>
-        <canvas id="myChart" ref={chartRef} width="200" height="200"></canvas>
+        {!isloading && <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>}
+       <canvas id="myChart" ref={chartRef} width="250" height="250"></canvas>
       </div>
     </div>
   )

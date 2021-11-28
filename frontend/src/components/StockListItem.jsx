@@ -1,6 +1,9 @@
 import React from "react";
 import { Container,Card } from "react-bootstrap";
 import './StockListItem.css'
+const moreInfo=()=>{
+  
+}
 
 export default function StockListItem(props) {
   return (
