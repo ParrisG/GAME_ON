@@ -1,16 +1,24 @@
 import React from "react";
-import { Container,Card } from "react-bootstrap";
+import { Container,Card, Row } from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
 import './StockListItem.css'
-const moreInfo=()=>{
-  
-}
+
 
 export default function StockListItem(props) {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    const navString = "/stock/" + props.symbol;
+    console.log(navString);
+    navigate(navString);
+  }
+
   return (
-    <div className="stock__container" >
-        <div>{props.name}</div>
-        <div >$ {props.price}</div>
-        <div className="price">{props.percentChange}</div>
-        </div>
+    <Container onClick={handleClick} className="stock__container">
+        <div className="stock__name">{props.name}</div>
+        <div >Price: $ {props.price}</div>
+        <div className="percentage">Change: {props.percentChange}</div> 
+    </Container>
   )
 }

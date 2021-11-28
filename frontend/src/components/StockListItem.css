@@ -1,14 +1,20 @@
 
 .stock__container{
-  width: 100px;
-  height: 100px;
+  width: 7.5rem;
+  height: 7.5rem;
   background-color: rgb(46, 45, 45);
   color: white;
   border-bottom-color:rgb(0, 0, 0) ;
-  margin: 3px; 
+  margin: 5px; 
   border-radius:25px;
+  box-shadow: 2px 2px 2px 2px rgb(171,219,227);
   padding: 5px;
 }
-.stock__container > .price {
+.stock__container > .percentage {
   color: green;
+}
+.stock__container > .stock__name {
+  font-weight: 700;
+  text-decoration-line: underline;
+  font-size: 1.07rem
 }

@@ -16,9 +16,9 @@ export default function Dashboard(props) {
 
     if (token) {
       const user = jwt.decode(token);
-      console.log("This is Success", user);
+      //console.log("This is Success", user);
     } else {
-      console.log("Line NUmber 34");
+      //console.log("Line NUmber 34");
       localStorage.removeItem("token");
       alert("You have to Login To view this page");
       navigate("/login");
@@ -31,20 +31,16 @@ export default function Dashboard(props) {
   }
 
   return (
-    <>
-      <button onClick={logout}>logout</button>
-      <Container fluid>
-        <Row>
-          <Col>
-            <SymbolSearch />
-            <FilterBox />
-          </Col>
-          <Col>
-            <StockList /> 
-          </Col>
-        </Row>
-        
-      </Container>
-    </>
+    <Container>
+      <Row>
+        <Col>
+          <SymbolSearch />
+          <FilterBox />
+        </Col>
+        <Col>
+          <StockList /> 
+        </Col>
+      </Row> 
+    </Container>
   );
 }

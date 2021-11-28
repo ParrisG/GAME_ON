@@ -22,7 +22,7 @@ export default function FilterBox() {
     const getMarketCap = () => {
       const capArray = [];
       if (document.getElementById('nanoCap').checked) {
-        capArray.push({operator: 'LT', operands: ['intradaymarketcap', 50000000]});
+        capArray.push({operator: 'BTWN', operands: ['intradaymarketcap', 0, 50000000]});
       } else if (document.getElementById('microCap').checked) {
         capArray.push({operator: 'BTWN', operands: ['intradaymarketcap', 50000000, 300000000]});
       } else if (document.getElementById('smallCap').checked) {
@@ -145,7 +145,7 @@ export default function FilterBox() {
                 type="radio"
                 id="sort"
                 value="percentchange"
-                checked
+                
               />
               <Form.Check
                 inline
