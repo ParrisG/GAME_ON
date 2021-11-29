@@ -126,7 +126,7 @@ export default function StockInformation(props) {
 
   return (
     <div>
-      <h1> StockInformation: </h1>
+      <h1 style={{color:"white"}}> StockInformation: {params.ticker} </h1>
         {display}
       
       <p></p>
