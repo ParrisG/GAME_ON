@@ -4,16 +4,7 @@
   right: -650px;
   top: -340px;
 }
-@media(max-width:1024px){
-  .chart__size{
-    width:45rem;
-    position: relative;
-    right: -30px;
-    top: 40px;
-    z-index: 1;
-  }
-}
-@media(max-width:1200px){
+ @media(max-width:1200px){
   .chart__size{
     width:50rem;
     position: relative;
@@ -22,4 +13,23 @@
     z-index: 1;
   }
 
+} 
+@media(max-width:1024px){
+  .chart__size{
+    width:45rem;
+    position: relative;
+    right: -7px;
+    top: 40px;
+    z-index: 1;
+  }
 }
+@media(max-width:768px){
+  .chart__size{
+  width:38rem;
+  position: relative;
+  right: 10px;
+  top: 70px;
+  z-index: 1;
+}
+}
+
