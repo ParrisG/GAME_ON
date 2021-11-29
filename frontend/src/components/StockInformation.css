@@ -17,6 +17,8 @@ font-size: 1rem;
 .stock__infoheader{
   display: flex;
   justify-content: flex-start;
+  font-size: 25px;
+  font-weight: bold;
   padding: 0.7rem;
 }
 .stock__table >table >tr{

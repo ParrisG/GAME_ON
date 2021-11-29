@@ -61,13 +61,18 @@ export default function StockNewsList(props) {
       thumbnail = hasThumbnail.resolutions[1].url;
     }
 
+    let providerName = stream.content.provider.displayName;
+    if(!providerName){
+      providerName = 'Provider';
+    }
+   
     if(stream.content){
       return <StockNewsListItem 
       key={stream.id} 
       title={stream.content.title} 
       uuid={stream.id} 
       thumbnail={thumbnail}
-      provider={stream.content.provider.displayName}
+      provider={providerName}
       duration={duration}
       />
     } else {
