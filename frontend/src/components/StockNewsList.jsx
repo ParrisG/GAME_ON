@@ -45,13 +45,13 @@ export default function StockNewsList(props) {
     const publishedDate = stream.content.pubDate;
     const difference = new Date().getTime() - new Date(publishedDate).getTime();
     const minutesDifference = Math.floor(difference / 1000 / 60);
-    let duration = minutesDifference + 'minutes';
+    let duration = minutesDifference + ' ' + 'minutes';
     if(minutesDifference > 59 && minutesDifference < 1440){
       const hoursDifferences = Math.floor(difference / 1000 / 60 / 60);
-      duration = hoursDifferences + 'hours';
+      duration = hoursDifferences + ' '+ 'hours';
     } else if(minutesDifference > 1440){
       const daysDifference = Math.floor(difference / 1000 / 60 / 60 / 24);
-      duration = daysDifference + 'day';
+      duration = daysDifference +' '+ 'day';
     }
     let hasThumbnail = stream.content.thumbnail;
     let thumbnail;
