@@ -8,6 +8,7 @@ import HeaderBar from "./components/HeaderBar";
 import Login from "./components/Login/Login";
 import { stockArrContext } from './providers/StockArrProvider';
 import axios from 'axios';
+import Register from './components/Login/Register';
 require('dotenv').config();
 
 
@@ -62,6 +63,7 @@ function App() {
 
       <Routes>
         <Route path="/start" element={<Start />} />
+        <Route path="/register" element={<Register/>}/>
         <Route path="/login" element={<Login/>} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/stock/:ticker" element={<StockDetail />} />

@@ -39,3 +39,79 @@ font-size: 1rem;
   width:50%;
   float:right;
 }
+@media(max-width:1024px){
+  .stock__infocontainer{
+    background-color: #3c3c4d;
+    width: 750px;
+    height: 350px;
+    color:rgb(250, 248, 248);
+    border-radius: 2%;
+    box-shadow: 0 0 20px 0rgb(0,0,0 /7%);
+    position: relative;
+    left: 10px;
+    top:20px;
+  }
+  .stock__name > p {
+  padding: 0;
+  margin:0;
+  font-size: .9rem; 
+  }
+  .stock__infoheader{
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .stock__table >table >tr{
+    text-align: start;
+     margin-right: 0.6rem;
+  }
+  .stock__label{
+    font-size: 1.1rem;
+    display: flex;
+  }
+  .stock__number{
+    color: rgb(250, 246, 246);
+    font-weight:700;
+    font-size: 0.8rem;
+  }
+  .floatleft{
+    width: 50%;
+    float: left;
+  }
+  .floatright{
+    width:50%;
+    float:right;
+  }
+
+}
+ @media(max-width:1200px){
+  .stock__infocontainer{
+    width: 800px;
+    height: 400px;
+    color:white;
+    border-radius: 4%;
+    position: relative;
+    left: 10px;
+    top:20px;
+  }
+  
+  .stock__infoheader{
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.7rem;
+  }
+  .stock__table >table >tr{
+    text-align: start;
+     margin-right: 0.6rem;
+  }
+  .stock__label{
+    font-size: 1.2rem;
+    display: flex;
+  }
+  .stock__number{
+    font-weight:750;
+  }
+  
+
+} 

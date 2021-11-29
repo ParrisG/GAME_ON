@@ -20,7 +20,7 @@ export default function HeaderBar(props) {
   function logout() {
     localStorage.removeItem("token");
     //setLogin(false)
-    navigate("/login");
+    navigate("/start");
   }
   return (
     <>

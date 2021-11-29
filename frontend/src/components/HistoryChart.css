@@ -4,3 +4,22 @@
   right: -650px;
   top: -340px;
 }
+@media(max-width:1024px){
+  .chart__size{
+    width:45rem;
+    position: relative;
+    right: -30px;
+    top: 40px;
+    z-index: 1;
+  }
+}
+@media(max-width:1200px){
+  .chart__size{
+    width:50rem;
+    position: relative;
+    right: -85px;
+    top: 50px;
+    z-index: 1;
+  }
+
+}

@@ -34,7 +34,7 @@ export default function StockNewsListItem(props) {
         <div className="newsfeed__header">
           <span>{props.provider}</span>
           <br/>
-          <span>{props.duration}ago</span>
+          <span>{props.duration} ago</span>
         </div>
           <div>
             <table>

@@ -17,3 +17,41 @@
   color: rgb(85, 85, 252);
   cursor: pointer;
 }
+@media(max-width:1024px){
+  .newsfeed__container{
+    width: 750px;
+    position: relative;
+    top:70px;
+    left: 20px;
+  
+  }
+  .newsfeed__image{
+    width: 85px;
+    height: 85px;
+  }
+  .newsfeed__container >table >tr{
+    text-align: center;
+  }
+  .App{
+    height: 1670px;
+  }
+}
+@media(max-width:1200px){
+  .newsfeed__container{
+    width: 780px;
+    position: relative;
+    top:100px;
+    left: 0px;
+  }
+  .newsfeed__image{
+    width: 90px;
+    height: 90px;
+  }
+  .newsfeed__container >table >tr{
+    text-align: center;
+  }
+  .App{
+    height: 1770px;
+  }
+
+}
