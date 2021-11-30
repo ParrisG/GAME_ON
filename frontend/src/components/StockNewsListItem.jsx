@@ -28,9 +28,9 @@ export default function StockNewsListItem(props) {
     <Container className="newsfeed__container" style={{borderBottom:'1px solid black',padding:'1px',paddingBottom:'2px'}}>
       <div className="newsfeed__inner">
         <div className="newsfeed__header">
-          <span>{props.provider}</span>
+          <span style={{color:'#44569e',fontWeight:"bold"}}>{props.provider}</span>
           <br/>
-          <span>{props.duration} ago</span>
+          <span style={{color:'#44569e',fontWeight:"bold"}}>{props.duration} ago</span>
         </div>
           <div>
             <table>
