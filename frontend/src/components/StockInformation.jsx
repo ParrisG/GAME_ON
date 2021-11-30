@@ -8,8 +8,17 @@ export default function StockInformation(props) {
 
   const [stockInfo, setStockInfo] = useState();
 
-  let params = useParams(); //we can access the :ticker value as params.ticker
 
+  let params = useParams(); //we can access the :ticker value as params.ticker
+ const colorChange = (amount) => {
+   const number =Number(amount)
+   if(number >0){
+     return true;
+   } else {
+     return false
+   }
+   
+ }
   
   const singleStockOptions = () => {
     return {
@@ -26,6 +35,8 @@ export default function StockInformation(props) {
   useEffect(() => {
     axios.request(singleStockOptions())
     .then((response) => {
+      console.log( typeof( response.data.price.regularMarketChange.fmt))
+
       setStockInfo(response.data);
     })
     .catch((error) => {
@@ -78,7 +89,7 @@ export default function StockInformation(props) {
                 <br/>
                 <tr>
                   <td className='stock__label'>Change</td>
-                  <td className='stock__number'>{stockInfo.price.regularMarketChange.fmt}</td>
+                  <td style ={{color:(colorChange(stockInfo.price.regularMarketChange.fmt)) > 0 ? 'green' : 'red'}}className='stock__number'>{stockInfo.price.regularMarketChange.fmt}</td>
                 </tr>
                 <br/>
               </table>
@@ -87,7 +98,7 @@ export default function StockInformation(props) {
               <table >
                 <tr>
                   <td className='stock__label'    style={{paddingRight:'100px'}}>Change%</td>
-                  <td className='stock__number'>{stockInfo.price.regularMarketChangePercent.fmt}</td>
+                  <td  style ={{color:(colorChange(stockInfo.price.regularMarketChange.fmt)) > 0 ? 'green' : 'red'}} className='stock__number'>{stockInfo.price.regularMarketChangePercent.fmt}</td>
                 </tr>
                 <br style={{Color:"black"}}/>
                 <tr>

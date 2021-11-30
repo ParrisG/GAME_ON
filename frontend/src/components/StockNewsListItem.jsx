@@ -3,7 +3,6 @@ import Container from 'react-bootstrap/Container';
 import './StockNewsListItem.css'
 
 export default function StockNewsListItem(props) {
-  console.log(props.duration)
  
   function getNewsDetails(){
     let id = props.uuid;
