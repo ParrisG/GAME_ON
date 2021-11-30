@@ -1,5 +1,4 @@
 import React from "react";
-import Register from "./Login/Register";
 import Login from './Login/Login'
 import { Container } from "react-bootstrap";
 import './Start.css'

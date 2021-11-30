@@ -1,8 +1,5 @@
 import axios from "axios";
-import { Card } from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
-import ListGroup from 'react-bootstrap/ListGroup';
-import { Image } from "react-bootstrap";
 import './StockNewsListItem.css'
 
 export default function StockNewsListItem(props) {
@@ -39,7 +36,7 @@ export default function StockNewsListItem(props) {
           <div>
             <table>
               <tr>
-                <td><img style={{width:'100px',height:'100px',marginRight:'1.5rem'}}src={props.thumbnail}/></td>
+                <td><img  alt= '' style={{width:'100px',height:'100px',marginRight:'1.5rem'}}src={props.thumbnail}/></td>
                 <td onClick={getNewsDetails}   className="newsfeed__title">{props.title}</td>
               </tr>
             </table>

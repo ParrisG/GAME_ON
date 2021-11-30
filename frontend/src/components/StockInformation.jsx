@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-import {Badge,Container, Card, Spinner, ListGroup} from 'react-bootstrap';
+import {Container,Spinner} from 'react-bootstrap';
 import axios from "axios";
 import './StockInformation.css'
 

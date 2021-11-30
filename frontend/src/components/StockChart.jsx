@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 import HistoryChart from "./HistoryChart";
 export default function StockChart(props) {
+  
   let param = useParams();
   const getChartTime = (timestamp) =>{
     const date = new Date(timestamp * 1000);

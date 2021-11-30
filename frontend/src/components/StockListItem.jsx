@@ -1,5 +1,5 @@
 import React from "react";
-import { Container,Card, Row } from "react-bootstrap";
+import { Container} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import './StockListItem.css'
 

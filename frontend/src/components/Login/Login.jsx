@@ -1,13 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom'
-import React, { useEffect, useRef,useState } from "react";
+import React, { useRef,useState } from "react";
 import { Form, Button, Card, Alert,Container } from "react-bootstrap";
 import axios from "axios";
 import './Login.css'
 
-//import { response } from 'express';
 
 export default function Login () {
-  //axios.defaults.withCredentials = true;
+ 
 
   const navigate = useNavigate();
 

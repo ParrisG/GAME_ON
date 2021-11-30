@@ -13,13 +13,13 @@ export default function HeaderBar(props) {
 
     if (token) {
       const user = jwt.decode(token);
-      //setLogin(true)
-    }
-  }, []);
+      setLogin(true);
+    } 
+  });
 
   function logout() {
     localStorage.removeItem("token");
-    //setLogin(false)
+    setLogin(false)
     navigate("/start");
   }
   return (
@@ -36,7 +36,7 @@ export default function HeaderBar(props) {
           />{' '}
           <span style={{fontSize:"3rem"}}>Game On!</span>
         </Navbar.Brand>
-        <Button onClick={logout}>logout</Button>
+        {islogin && <Button onClick={logout}>logout</Button>}
       </Container>
     </Navbar>
   </>
