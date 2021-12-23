@@ -25,7 +25,7 @@ GAME ON is a research tool designed to help day traders identify potential “st
 
 This app was made as a final project for our Web Development Bootcamp at Lighthouse Labs
 by
-Parris Greaves https://github.com/ParrisG
-Jenob Job https://github.com/jenobpj
-Anju Kumaran https://github.com/anju-kumaran
+##### Parris Greaves https://github.com/ParrisG
+##### Jenob Job https://github.com/jenobpj
+##### Anju Kumaran https://github.com/anju-kumaran
 
