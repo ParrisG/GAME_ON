@@ -14,12 +14,12 @@ GAME ON is a research tool designed to help day traders identify potential “st
 
 ## Tech Stack
 
-React
-React-Bootstrap
-React-Chartjs
-Node.js
-Express.js
-PostgreSQL
+- React
+- React-Bootstrap
+- React-Chartjs
+- Node.js
+- Express.js
+- PostgreSQL
 
 ### Coded By
 
